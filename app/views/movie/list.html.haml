@@ -1,0 +1,21 @@
+%div.container.movie-container
+  - @movies.each do |a|
+    %div.row
+      %div.col-sm-2
+        %img{ :src => 'https://via.placeholder.com/150'}
+      %div.col-sm-10
+        %div.row
+          %div.col-sm-10
+            %h3= a['title']
+            %p= a['description']
+        %div.row
+          %div.col-sm-5
+            %p
+              %i.fas.fa-ticket-alt{:class => ('kaleb-yellow' if a['rating'] >= 7.5)}
+              IMDB Rating
+              = a['rating']
+          %div.col-sm-5
+            %p
+              %i.fas.fa-ticket-alt
+              KMR User Rating
+              = a['rating']

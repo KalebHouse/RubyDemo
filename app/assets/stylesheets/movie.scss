@@ -1,0 +1,20 @@
+// Place all the styles related to the movie controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// Import Bootstrap v5  
+@import "../../../node_modules/bootstrap/scss/bootstrap"; 
+@import 'variables';
+
+body {
+    background-color: $kaleb-purple;
+    .movie-container {
+        background-color: $kaleb-grey;
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin-top: 5px;
+    }
+    .kaleb-yellow{
+        color: $kaleb-yellow;
+    }
+}
