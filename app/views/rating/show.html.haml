@@ -1,0 +1,23 @@
+- movie_container(@movie)
+- @ratings.each do |a|
+  %div.container.comment-container
+    %div.row
+      %div.col-sm-10
+        %h4 #{a.user['username']}
+      %div.col-sm-2
+        #{a['score']} 
+        %i.fas.fa-ticket-alt{ class: ('kaleb-yellow' if a['score'] >= 7.5) }
+    %div.row
+      %div.col-sm-12
+        #{a['comment']}
+%div.container.comment-container
+  %form
+    %div.mb-3
+      %label.form-label{ for: 'userScore'}
+        How would you score this movie?
+      %input#userScore.form-control{ type: 'number'} 
+    %div.mb-3
+      %label.form-label{ for: 'userComment'}
+        What did you think about it?
+      %textarea#userComment.form-control
+    %button.btn.btn-primary.ms-auto{ type: 'submit'} Submit

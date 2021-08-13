@@ -5,7 +5,7 @@ class CreateMovies < ActiveRecord::Migration[6.1]
       t.column :year, :int
       t.column :runtime, :int
       t.column :genre, :string
-      t.column :rating, :decimal
+      t.column :imdbRating, :decimal
       t.column :description, :string
       t.timestamps
     end
