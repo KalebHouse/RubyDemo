@@ -23,3 +23,4 @@ Adding, editing, and deleting ratings work
 
 ### Future Features
 Logging in, signing up
+Review slider redesign
