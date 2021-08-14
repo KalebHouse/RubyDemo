@@ -1,5 +1,6 @@
 class MovieController < ApplicationController
   def list
-    @movies = Movie.all
+    @movies = Movie.includes(:rating)
+    puts @movies
   end
 end

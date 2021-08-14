@@ -1,0 +1,11 @@
+%div.container.comment-container
+  = form_for @rating, url: "/rating/update/#{@rating.id}", method: :patch, role: 'form', class: 'row g-3' do |f|
+    %div.row.mb-3
+      %div.col-sm-12
+        = label_tag 'score', 'How would you score this movie?', class: 'form-label' 
+        = f.range_field :score, class: 'form-range', step: 0.5,  in: 1..5 
+    %div.row.mb-3
+      %div.col-sm-12
+        = label_tag 'comment', 'What did you think about it?', class: 'form-label'     
+        = f.text_area :comment, class: 'form-control', size: '70x5'
+    = f.submit class: 'btn btn-primary ms-auto'

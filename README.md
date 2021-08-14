@@ -17,3 +17,9 @@ rails s
 ```
 
 The site will be on [localhost](http://127.0.0.1:3000)
+
+### Features
+Adding, editing, and deleting ratings work
+
+### Future Features
+Logging in, signing up

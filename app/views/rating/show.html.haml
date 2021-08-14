@@ -1,23 +1,37 @@
 - movie_container(@movie)
 - @ratings.each do |a|
   %div.container.comment-container
+    -if a.user_id == 1
+      %div.row
+        %div.col-sm-12
+          %div.float-end
+            = link_to ('<i class="far fa-edit"></i>').html_safe, "/rating/edit/#{a.id}"
+            = link_to ('<i class="fas fa-times"></i>').html_safe, "/rating/delete/#{a.id}", :method => :delete, data: { confirm: 'Delete this rating?' }
     %div.row
       %div.col-sm-10
         %h4 #{a.user['username']}
       %div.col-sm-2
         #{a['score']} 
-        %i.fas.fa-ticket-alt{ class: ('kaleb-yellow' if a['score'] >= 7.5) }
+        %i.fas.fa-ticket-alt.kaleb-yellow
     %div.row
       %div.col-sm-12
         #{a['comment']}
 %div.container.comment-container
-  %form
-    %div.mb-3
-      %label.form-label{ for: 'userScore'}
-        How would you score this movie?
-      %input#userScore.form-control{ type: 'number'} 
-    %div.mb-3
-      %label.form-label{ for: 'userComment'}
-        What did you think about it?
-      %textarea#userComment.form-control
-    %button.btn.btn-primary.ms-auto{ type: 'submit'} Submit
+  = form_for :rating, url: "/rating/add/#{@movie.id}", method: :post, role: 'form', class: 'row g-3' do |f|
+    %div.row.mb-3
+      %div.col-sm-11
+        = label_tag 'userScore', 'How would you score this movie?', class: 'form-label' 
+        = f.range_field :userScore, class: 'form-range', step: 0.5,  in: 1..5, onChange: 'rangeSlide(this.value)', onMouseMove: 'rangeSlide(this.value)'
+      %div.col-sm-1
+        = label_tag 'scoreOutput', '', class: 'form-label'
+        %input.form-control#scoreOutput{ disabled: true }
+    %div.row.mb-3
+      %div.col-sm-12
+        = label_tag 'userComment', 'What did you think about it?', class: 'form-label'     
+        = f.text_area :userComment, class: 'form-control', size: '70x5'
+    = f.submit class: 'btn btn-primary ms-auto'
+:javascript
+  function rangeSlide(value) {
+    console.log(value);
+    document.getElementById('scoreOutput').value = value;
+  }

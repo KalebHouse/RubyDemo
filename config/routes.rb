@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   root to: 'movie#list'
   get 'movie/list'
   get 'rating/:id', to: 'rating#show'
+  post 'rating/add/:id', to: 'rating#add'
+  get 'rating/edit/:id', to: 'rating#edit'
+  patch 'rating/update/:id', to: 'rating#update'
+  delete 'rating/delete/:id', to: 'rating#delete'
 end
